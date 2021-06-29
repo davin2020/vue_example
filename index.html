@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  	<title>Vue Example - Killjoy Planets</title>
+  	<!-- both these CDN options work, not sure what the difference between them is? -->
+  	<script src="https://unpkg.com/vue@next"></script>
+	<!-- <script src="https://unpkg.com/vue@3.1.2/dist/vue.global.js"></script> -->
+</head>
+
+<body>
+	<h1>Planets of The Quad</h1>
+
+	<strong>Some Info about The Quad Planetary System from Killjoys</strong>
+
+	<!-- show info from vue app-->
+	<div id='quad_planets_1'>
+	    <p>Name - {{ name }} </p>
+	    <p>Type - {{ type  }} </p>
+	    <p>Population - {{ population }} </p>
+	</div>
+
+	<br>
+	<div id='quad_planets_2'>
+	    <p>Name - {{ name }} </p>
+	    <p>Type - {{ type  }} </p>
+	    <p>Population - {{ population }} </p>
+	</div>
+
+<!-- how to return multiple objs/data? as extra curley braces isnt working -->
+<script>
+    const AppPlanetQresh = Vue.createApp({
+        data() {
+            return {
+            	name: 'Qresh',
+				population: '300',
+				type: 'Dwarf Planet'
+            };
+        }
+    });
+    // Registering and mounting our app
+    AppPlanetQresh.mount('#quad_planets_1');
+
+    const AppPlanetArkyn = Vue.createApp({
+        data() {
+            return {
+            	name: 'Arkyn',
+				population: '0',
+				type: 'Moon'
+            };
+        }
+    });
+    AppPlanetArkyn.mount('#quad_planets_2');
+</script>
+
+</body>
+</html>
