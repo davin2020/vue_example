@@ -3,7 +3,22 @@
 <head>
   <meta charset="utf-8">
   	<title>Vue Example - Killjoy Planets</title>
+
+    <style>
+    body {
+      background-color: lightblue;
+      font-family: verdana;
+      margin: 20px;
+    }
+
+    h1, h2, h3 {
+      color: blue;
+      /*margin-left: 10px;*/
+    }
+    </style>
+
   	<script src="https://unpkg.com/vue@next"></script>
+
 </head>
 
 <body>
@@ -23,6 +38,37 @@
 	    <p>Type - {{ type  }} </p>
 	    <p>Population - {{ population }} </p>
 	</div>
+    <br>
+
+<!-- loops -->
+    <h2>Example using Loops</h2>
+    <div id="quad_test_loops">
+        <strong>The moons surrounding Qresh are - </strong>
+      <ol>
+        <li v-for="todo in todos">{{ todo.text }}</li>
+      </ol>
+    </div>
+
+    <!-- v-model directive Data binding -->
+    <strong>Data Binding Example </strong>
+    <h2>Data Binding Example </h2>
+    <div id="app_model">
+        Enter some data in the input box to see reflected below:
+        <br><input v-model="value" />
+      <p>{{ value }}</p>
+      
+    </div>
+
+    <!-- v-on directive OnClick -->
+    <strong>Random Number Generator</strong>
+    <h3>Random Number Generator</h3>
+    <div id="app_onclick">
+      <span>{{ message }}</span>
+      <br>
+      <button v-on:click="randomGenerate">Click me</button>
+    </div>
+    <br>
+    <br>
 
 <script>
     const AppPlanetQresh = Vue.createApp({
@@ -46,7 +92,79 @@
         }
     });
     AppPlanetArkyn.mount('#quad_planets_2');
+
+    //third test - v-for is used for loops
+    //  what about a 2D array?
+    const AppPlanetsLoop = Vue.createApp({
+        data() {
+            return {
+                todos: [
+                    { text: "Arkyn" },
+                    { text: "Leith" },
+                    { text: "Westerley" },
+                  ],
+            };
+        }
+    });
+    AppPlanetsLoop.mount('#quad_test_loops');
+
+    //data binding example - definitely need return stmt!
+    const AppPlanetBinding = Vue.createApp({
+        data() {
+            return {
+                value: 'Enter some data here'
+            };
+        }
+    });
+    AppPlanetBinding.mount('#app_model');
+
+    //  click me example
+    const AppPlanetClick = Vue.createApp({
+        data() {
+            return {
+                message: "Click the button to get a random number",
+            };
+        },
+        methods: {
+          randomGenerate() {
+            this.message = Math.random()
+          },
+        },
+    });
+    AppPlanetClick.mount('#app_onclick');
+
 </script>
+
+<h2>Cruise</h2>
+<!-- create display for vue info -->
+<div id='quad_cruise'>
+    <h3>{{ productName }}</h3>
+    <div>{{ productDescription }}</div>
+</div>
+
+
+<script>
+    // appCruise.mount('#quad_cruise');
+</script>
+
+<h2>Binding Colors</h2>
+<div id="appBindTest">
+    <!-- <img v-bind:src="imageSource" /> -->
+    <p v-bind:style="sourceColor">some green text</p>
+    <p style="color:red;">some red text</p>
+</div>
+
+<h2>Image of Lucy the Spaceship</h2>
+<div id="appBindTest2">
+    <img v-bind:src="imageSourceLucy" />
+    <!-- binding shorthand, using : -->
+    <img :src="imageSource" />
+</div>
+
+<br>
+
+<!-- import the vue app, after the rest of the  html page has loaded -->
+<script src="./index.js"></script>
 
 </body>
 </html>
