@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   	<title>Vue Example - Killjoy Planets</title>
+
     <style>
     body {
       background-color: lightblue;
@@ -14,19 +15,10 @@
       color: blue;
       /*margin-left: 10px;*/
     }
-
     </style>
 
-    <!-- <style background-color: blue> -->
-  	<!-- both these CDN options work, not sure what the difference between them is? 
-    this one now works ok for both examples
-    -->
   	<script src="https://unpkg.com/vue@next"></script>
-	<!-- <script src="https://unpkg.com/vue@3.1.2/dist/vue.global.js"></script> -->
 
-    <!-- needed for Examples from here, seems u cant have 2x CDN for Vue??  - https://developerlife.com/2018/08/15/introduction-to-vue/ -->
-    <!-- This is a development version of Vue.js! -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
 </head>
 
 <body>
@@ -34,7 +26,6 @@
 
 	<strong>Some Info about The Quad Planetary System from Killjoys</strong>
 
-	<!-- show info from vue app-->
 	<div id='quad_planets_1'>
 	    <p>Name - {{ name }} </p>
 	    <p>Type - {{ type  }} </p>
@@ -79,7 +70,6 @@
     <br>
     <br>
 
-<!-- how to return multiple objs/data? as extra curley braces isnt working -->
 <script>
     const AppPlanetQresh = Vue.createApp({
         data() {
@@ -90,7 +80,6 @@
             };
         }
     });
-    // Registering and mounting our app
     AppPlanetQresh.mount('#quad_planets_1');
 
     const AppPlanetArkyn = Vue.createApp({
@@ -161,9 +150,6 @@
 <h2>Binding Colors</h2>
 <div id="appBindTest">
     <!-- <img v-bind:src="imageSource" /> -->
-    <!-- <img v-bind:src="imageSource" /> -->
-    <!-- <p v-bind:color="sourceColor" /> -->
-    <!-- <p stylecolor="red">some text</p> -->
     <p v-bind:style="sourceColor">some green text</p>
     <p style="color:red;">some red text</p>
 </div>
@@ -176,9 +162,6 @@
 </div>
 
 <br>
-END
-<!-- <img src="spaceship_lucy.png" /> -->
-
 
 <!-- import the vue app, after the rest of the  html page has loaded -->
 <script src="./index.js"></script>
