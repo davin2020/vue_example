@@ -22,9 +22,10 @@
 </head>
 
 <body>
-	<h1>Planets of The Quad</h1>
+	<h1>Welcome to The Quad</h1>
 
-	<strong>Some Info about The Quad Planetary System from Killjoys</strong>
+    <h2>Planets of The Quad</h2>
+	<p>Some Info about The Quad Planetary System from Killjoys</p>
 
 	<div id='quad_planets_1'>
 	    <p>Name - {{ name }} </p>
@@ -41,31 +42,36 @@
     <br>
 
 <!-- loops -->
-    <h2>Example using Loops</h2>
+    <h2>Moons around the Planet Qresh</h2>
+    <strong>Example using Loops</strong>
     <div id="quad_test_loops">
-        <strong>The moons surrounding Qresh are - </strong>
+        <p>The moons surrounding Qresh are - </p>
       <ol>
-        <li v-for="todo in todos">{{ todo.text }}</li>
+        <li v-for="moon in moons">{{ moon.label }}</li>
       </ol>
     </div>
 
     <!-- v-model directive Data binding -->
+    <!-- <strong>Data Binding Example </strong> -->
+    
+    <h2>Favourite Drink at the Local Pub</h2>
     <strong>Data Binding Example </strong>
-    <h2>Data Binding Example </h2>
     <div id="app_model">
-        Enter some data in the input box to see reflected below:
+        <p>Enter your favrouite drink in the input box to see it reflected below:</p>
         <br><input v-model="value" />
-      <p>{{ value }}</p>
-      
+        <blockquote>{{ value }}</blockquote>
     </div>
 
     <!-- v-on directive OnClick -->
-    <strong>Random Number Generator</strong>
-    <h3>Random Number Generator</h3>
+    
+    <h2>Donations for Insider Intel</h2>
+    <strong>Random Number Generator Example</strong>
+    <!-- <em>Random Number Generator Example</em> -->
+    <p>How much should Dutch donate to Alvis the monk, to get some insider intelligence?</p>
     <div id="app_onclick">
-      <span>{{ message }}</span>
+      <span>$ {{ amount }}</span>
       <br>
-      <button v-on:click="randomGenerate">Click me</button>
+      <button v-on:click="randomGenerate">{{ message }}</button>
     </div>
     <br>
     <br>
@@ -98,10 +104,10 @@
     const AppPlanetsLoop = Vue.createApp({
         data() {
             return {
-                todos: [
-                    { text: "Arkyn" },
-                    { text: "Leith" },
-                    { text: "Westerley" },
+                moons: [
+                    { label: "Arkyn" },
+                    { label: "Leith" },
+                    { label: "Westerley" },
                   ],
             };
         }
@@ -112,7 +118,7 @@
     const AppPlanetBinding = Vue.createApp({
         data() {
             return {
-                value: 'Enter some data here'
+                value: 'The local whisky Hock'
             };
         }
     });
@@ -122,12 +128,13 @@
     const AppPlanetClick = Vue.createApp({
         data() {
             return {
-                message: "Click the button to get a random number",
+                message: "Click to generate a random donation amount",
+                amount: 0
             };
         },
         methods: {
           randomGenerate() {
-            this.message = Math.random()
+            this.amount = Math.random() *100
           },
         },
     });
@@ -137,6 +144,7 @@
 
 <h2>Cruise</h2>
 <!-- create display for vue info -->
+<!-- this info is NOT being updated! -->
 <div id='quad_cruise'>
     <h3>{{ productName }}</h3>
     <div>{{ productDescription }}</div>
@@ -144,14 +152,21 @@
 
 
 <script>
-    // appCruise.mount('#quad_cruise');
+    // appCruise.mount('#lucy_cruise');
 </script>
+
+
+<!-- <div id='lucy_cruise'>
+    <h3>{{ productName }}</h3>
+    <div>{{ productDescription }}</div>
+</div>
+ -->
 
 <h2>Binding Colors</h2>
 <div id="appBindTest">
     <!-- <img v-bind:src="imageSource" /> -->
-    <p v-bind:style="sourceColor">some green text</p>
-    <p style="color:red;">some red text</p>
+    <p v-bind:style="sourceColor">Book Now!</p>
+    <p style="color:red;">Limited Seats Available</p>
 </div>
 
 <h2>Image of Lucy the Spaceship</h2>
