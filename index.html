@@ -142,44 +142,46 @@
 
 </script>
 
-<h2>Cruise</h2>
+<h2>Cruise Options</h2>
 <!-- create display for vue info -->
 <!-- this info is NOT being updated! -->
-<div id='quad_cruise'>
+<!-- <div id='quad_cruise'>
     <h3>{{ productName }}</h3>
     <div>{{ productDescription }}</div>
-</div>
+</div> -->
 
 
-<script>
-    // appCruise.mount('#lucy_cruise');
-</script>
 
 
-<!-- <div id='lucy_cruise'>
+<div id="lucy_cruise">
     <h3>{{ productName }}</h3>
     <div>{{ productDescription }}</div>
-</div>
- -->
-
-<h2>Binding Colors</h2>
-<div id="appBindTest">
-    <!-- <img v-bind:src="imageSource" /> -->
-    <p v-bind:style="sourceColor">Book Now!</p>
+    <p v-bind:style="sourceColor2">Book Now!</p>
     <p style="color:red;">Limited Seats Available</p>
+    <p>Checkout Lucy the Spaceship</p>
+    <img v-bind:src="imageSource2" />
 </div>
 
-<h2>Image of Lucy the Spaceship</h2>
+
+<!-- <h3>Binding Colors</h2>
+<div id="appBindTest"> -->
+    <!-- <img v-bind:src="imageSource" /> -->
+<!--     <p v-bind:style="sourceColor">Book Now!</p>
+    <p style="color:red;">Limited Seats Available</p>
+</div> -->
+
+<!-- <h3>Checkout Lucy the Spaceship</h2>
 <div id="appBindTest2">
-    <img v-bind:src="imageSourceLucy" />
+    <img v-bind:src="imageSourceLucy" /> -->
     <!-- binding shorthand, using : -->
-    <img :src="imageSource" />
-</div>
+<!--     <img :src="imageSource" />
+</div> -->
 
 <br>
 
 <!-- import the vue app, after the rest of the  html page has loaded -->
 <script src="./index.js"></script>
+
 
 </body>
 </html>
