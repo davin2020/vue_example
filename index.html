@@ -3,13 +3,30 @@
 <head>
   <meta charset="utf-8">
   	<title>Vue Example - Killjoy Planets</title>
+
+    <style>
+        body {
+          background-color: lightblue;
+          font-family: verdana;
+          margin: 20px;
+        }
+
+        h1, h2, h3 {
+          color: blue;
+        }
+    </style>
+
+    <!-- load vue from CDN -->
   	<script src="https://unpkg.com/vue@next"></script>
+
 </head>
 
 <body>
-	<h1>Planets of The Quad</h1>
+	<h1>Welcome to The Quad!</h1>
 
-	<strong>Some Info about The Quad Planetary System from Killjoys</strong>
+    <h2>Planets of The Quad</h2>
+    <strong>Example using handlebars {{ }}</strong>
+	<p>Some Info about The Quad Planetary System from Killjoys</p>
 
 	<div id='quad_planets_1'>
 	    <p>Name - {{ name }} </p>
@@ -23,30 +40,95 @@
 	    <p>Type - {{ type  }} </p>
 	    <p>Population - {{ population }} </p>
 	</div>
+    <br>
 
-<script>
-    const AppPlanetQresh = Vue.createApp({
-        data() {
-            return {
-            	name: 'Qresh',
-				population: '300',
-				type: 'Dwarf Planet'
-            };
-        }
-    });
-    AppPlanetQresh.mount('#quad_planets_1');
+    <!-- loops -->
+    <h2>Moons around the Planet Qresh</h2>
+    <strong>Loop Example using v-for</strong>
+    <div id="quad_test_loops">
+        <p>The moons surrounding Qresh are - </p>
+      <ol>
+        <li v-for="moon in moons">{{ moon.label }}</li>
+      </ol>
+    </div>
 
-    const AppPlanetArkyn = Vue.createApp({
-        data() {
-            return {
-            	name: 'Arkyn',
-				population: '0',
-				type: 'Moon'
-            };
-        }
-    });
-    AppPlanetArkyn.mount('#quad_planets_2');
-</script>
+    <!-- v-model directive Data binding -->
+    <h2>Favourite Drink at the Local Pub</h2>
+    <strong>Data Binding Example using v-model</strong>
+    <div id="app_model">
+        <p>Enter your favrouite drink in the input box to see it reflected below:</p>
+        <br><input v-model="value" />
+        <blockquote>{{ value }}</blockquote>
+    </div>
+
+    <!-- v-on directive OnClick -->
+    <h2>Donations for Insider Intel</h2>
+    <strong>Random Number Generator Example using v-on</strong>
+    <p>How much should Dutch donate to Alvis the monk, to get some insider intelligence?</p>
+    <div id="app_onclick">
+      <span>$ {{ amount }}</span>
+      <br>
+      <button v-on:click="randomGenerate">{{ message }}</button>
+    </div>
+    <br>
+    <br>
+
+    <script>
+        const AppPlanetQresh = Vue.createApp({
+            data() {
+                return {
+                	name: 'Qresh',
+    				population: '300',
+    				type: 'Dwarf Planet'
+                };
+            }
+        });
+        AppPlanetQresh.mount('#quad_planets_1');
+
+        const AppPlanetArkyn = Vue.createApp({
+            data() {
+                return {
+                	name: 'Arkyn',
+    				population: '0',
+    				type: 'Moon'
+                };
+            }
+        });
+        AppPlanetArkyn.mount('#quad_planets_2');
+
+        //third test - v-for is used for loops - but what about a 2D array?
+        const AppPlanetsLoop = Vue.createApp({
+            data() {
+                return {
+                    moons: [
+                        { label: "Arkyn" },
+                        { label: "Leith" },
+                        { label: "Westerley" },
+                      ],
+                };
+            }
+        });
+        AppPlanetsLoop.mount('#quad_test_loops');
+    </script>
+
+
+    <h2>Cruise Options</h2>
+    <strong>Example of Binding using v-bind for CSS Styles and Image Source</strong>
+
+    <div id="lucy_cruise">
+        <h3>{{ productName }}</h3>
+        <div>{{ productDescription }}</div>
+        <p v-bind:style="sourceColor2">Book Now!</p>
+        <p style="color:red;">Limited Seats Available</p>
+        <p>Checkout Lucy the Spaceship - </p>
+        <img v-bind:src="imageSource2" />
+    </div>
+
+    <br>
+
+    <!-- import the vue app, after the rest of the  html page has loaded -->
+    <script src="./script.js"></script>
+
 
 </body>
 </html>
