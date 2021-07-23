@@ -14,6 +14,7 @@
         h1, h2, h3 {
           color: blue;
         }
+        img { width: 100%; }
     </style>
 
     <!-- load vue from CDN -->
@@ -115,19 +116,72 @@
     <h2>Cruise Options</h2>
     <strong>Example of Binding using v-bind for CSS Styles and Image Source</strong>
 
-    <div id="lucy_cruise">
+    <div  id="lucy_cruise">
         <h3>{{ productName }}</h3>
         <div>{{ productDescription }}</div>
-        <p v-bind:style="sourceColor2">Book Now!</p>
+        <p v-bind:style="sourceColor">Book Now!</p>
         <p style="color:red;">Limited Seats Available</p>
-        <p>Checkout Lucy the Spaceship - </p>
-        <img v-bind:src="imageSource2" />
+        <img v-bind:src="imageSource" /> 
+        <!-- <p>Checkout Lucy the Spaceship - </p> -->
+        
     </div>
 
     <br>
+    <!--  FORM about how much u like Killjoys, or whose your fave char? with tick boxes and text aread
+     -->
+     <h2>Form Test - Vanilla JS</h2>
+     <form id="test-form" method="post" action="">
+        <input type="text" class="input" name="name">
+        <br>
+        <label><input type="checkbox" id="ex1" name="ex1" value="optionA">Option A</label>
+        <br>
+        <label><input type="checkbox" id="ex1" name="ex1" value="optionB">Option B</label>
+        <br>
+        <button type="submit" id="btn">Submit me</button>
+     </form>
+
+     <h2>Form Test - Vue</h2>
+     <form id="test-form" method="post" action="">
+        <input type="text" class="input" name="name">
+        <br>
+        <label><input type="checkbox" id="ex1" name="ex1" value="optionA">Option A</label>
+        <br>
+        <label><input type="checkbox" id="ex1" name="ex1" value="optionB">Option B</label>
+        <br>
+        <button type="submit" id="btn">Submit me</button>
+     </form>
+
 
     <!-- import the vue app, after the rest of the  html page has loaded -->
     <script src="./script.js"></script>
+
+    <script>
+        //process teh form steps
+            // Grab the form
+            // Grab the inputs in the form
+            // Listen for the form's submit event
+            // Grab the values of our inputs
+            // Process!
+
+
+        // grab the things we need - get checkobox too!
+        const signupForm = document.getElementById('test-form');
+        const nameInput  = signupForm.querySelector('input[name=name]');
+
+        // listen for the submit event
+        signupForm.addEventListener('submit', processSignupForm);
+        function processSignupForm(e) {
+            e.preventDefault();
+
+            // get our data
+            const name  = nameInput.value;
+            console.log({ name });
+
+            // form processing here
+            alert('Processing!' + name);
+        }
+
+    </script>
 
 
 </body>
