@@ -29,8 +29,8 @@
             return {
                 productName: 'Book a Trip to Leith',
                 productDescription: 'Take a break from the smog of Westerley and book a trip to the verdant moon Leith. Relax aboard aboard Lucy the Spaceship with a glass of Hock and watch the Killjoys in action',
-                imageSource2: 'spaceship_lucy.png',
-                sourceColor2: 'color:green; font-weight: 700'
+                imageSource: 'spaceship_lucy.png',
+                sourceColor: 'color:green; font-weight: 700'
             }
         },
     });
