@@ -130,24 +130,47 @@
     <!--  FORM about how much u like Killjoys, or whose your fave char? with tick boxes and text aread
      -->
      <h2>Form Test - Vanilla JS</h2>
-     <form id="test-form" method="post" action="">
+     <form id="js_form" method="post" action="">
         <input type="text" class="input" name="name">
         <br>
-        <label><input type="checkbox" id="ex1" name="ex1" value="optionA">Option A</label>
+        <label><input type="checkbox" id="ex1" name="ex1" value="ex1optionA">Option A</label>
         <br>
-        <label><input type="checkbox" id="ex1" name="ex1" value="optionB">Option B</label>
+        <label><input type="checkbox" id="ex2" name="ex2" value="ex2optionB">Option B</label>
         <br>
         <button type="submit" id="btn">Submit me</button>
      </form>
 
      <h2>Form Test - Vue</h2>
-     <form id="test-form" method="post" action="">
-        <input type="text" class="input" name="name">
+     <form id="vue_form" method="post" action="">
+        <input type="text" class="input" name="name" v-model="name2">Name2: {{name2}}
         <br>
-        <label><input type="checkbox" id="ex1" name="ex1" value="optionA">Option A</label>
+
+        <input type="text" v-model="msg">
+        {{msg}}
         <br>
-        <label><input type="checkbox" id="ex1" name="ex1" value="optionB">Option B</label>
+
+        <input type="checkbox" v-model="checked">Checked: 
+        {{checked ? "yes" : "no"}}
         <br>
+
+        <input type="checkbox" v-model="toggle" true-exp="a" false-exp="b">Toggle: 
+        {{toggle ? "yes" : "no"}}
+        <br>
+
+        <label><input type="checkbox" id="ex1q1" name="ex1q1" value="optionA">Option A</label>
+        <br>
+        <label><input type="checkbox" id="ex1q2" name="ex1q2" value="optionB">Option B</label>
+        <br>
+        <!-- multiple select ie drop down text field -->
+          <!-- <p>
+            <select v-model="multiSelect" multiple>
+              <option>one</option>
+              <option>two</option>
+              <option>three</option>
+            </select>
+            {{multiSelect}}
+          </p> -->
+
         <button type="submit" id="btn">Submit me</button>
      </form>
 
@@ -164,22 +187,78 @@
             // Process!
 
 
-        // grab the things we need - get checkobox too!
-        const signupForm = document.getElementById('test-form');
+        // JS eg - grab the things we need - get checkobox too!
+        const signupForm = document.getElementById('js_form');
         const nameInput  = signupForm.querySelector('input[name=name]');
+        const ex1Input  = signupForm.querySelector('input[name=ex1]');
+        const ex2Input  = signupForm.querySelector('input[name=ex2]');
 
-        // listen for the submit event
+        // listen for the submit event - process js form
         signupForm.addEventListener('submit', processSignupForm);
         function processSignupForm(e) {
             e.preventDefault();
-
             // get our data
             const name  = nameInput.value;
-            console.log({ name });
-
+            const ex1Value  = ex1Input.value;
+            const ex2Value  = ex2Input.value;
+            console.log({ name }, {ex1Value} );
             // form processing here
-            alert('Processing!' + name);
+            alert('Processing! ' + name + " " + ex1Value);
         }
+
+
+        //vue eg
+        const signupFormVue = document.getElementById('vue_form');
+        const box1Input  = signupFormVue.querySelector('input[name=ex1q1]');
+        const box2Input  = signupFormVue.querySelector('input[name=ex1q2]');
+        //why not htis? doesnt work 
+        // const box2InputValue  = signupForm.querySelector('input[name=ex1q2]').value;
+
+        //process vue form
+        signupFormVue.addEventListener('submit', processSignupFormVue);
+        function processSignupFormVue(e) {
+            e.preventDefault();
+            console.log("signupFormVue");
+
+            
+            const box1Value  = box1Input.value;
+            const box2Value  = box2Input.value;
+            //how to get isChecked values and toggled values?? do i even need to get it in JS?? or just in Vue??
+            // const box2Value  = box2Input.checked;
+            console.log(box1Value);
+            console.log(box2Value);
+            //get checked and toggle values
+            const result1 = toggle;
+            // const result2 = "{{toggle}}";
+            console.log(result1);
+        }
+
+
+        //VUE - this syntax doenst seemt to work for me, might be for diff vue version?
+        // new Vue({
+        //   el: '#vue_form',
+        //   data: {
+        //     msg      : 'hi!',
+        //     checked  : true
+        //   }
+        // })
+
+        Vue.createApp({
+            data() {
+                return {
+                    msg      : 'killjoys are cool!',
+                    checked  : true,
+                    toggle: false,
+                    name2: ""
+                }
+            }
+        }).mount('#vue_form'); 
+        // if get msg lik this - " [Vue warn]: Property "toggle" was accessed during render but is not defined on instance.   at <App> ""
+        // means need to add item to data() return method of vue app - as this is what does the binding
+
+        // NEXT submit the form
+        // https://scotch.io/courses/getting-started-with-vuejs/processing-a-form-with-vue
+
 
     </script>
 
