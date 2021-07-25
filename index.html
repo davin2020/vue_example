@@ -141,8 +141,9 @@
      </form>
 
      <h2>Form Test - Vue</h2>
-     <form id="vue_form" method="post" action="">
-        <input type="text" class="input" name="name" v-model="name2">Name2: {{name2}}
+     <form id="vue_form" @submit.prevent="processForm">
+     <!-- <form id="vue_form" method="post" action=""> -->
+        <input type="text" class="input" name="name2" v-model="name2">Name2: {{name2}}
         <br>
 
         <input type="text" v-model="msg">
@@ -228,9 +229,9 @@
             console.log(box1Value);
             console.log(box2Value);
             //get checked and toggle values
-            const result1 = toggle;
+            // const result1 = toggle;
             // const result2 = "{{toggle}}";
-            console.log(result1);
+            // console.log(result1);
         }
 
 
@@ -243,6 +244,8 @@
         //   }
         // })
 
+        // methods() isnt working, likey wrong syntex for other stuff ive written
+
         Vue.createApp({
             data() {
                 return {
@@ -250,6 +253,13 @@
                     checked  : true,
                     toggle: false,
                     name2: ""
+                }
+            },
+            methods() {
+                function processForm() {
+                    console.log("inside processForm");
+                    console.log({ msg: this.msg, checked: this.checked, name2: this.name2 });
+                    alert('Processing!');
                 }
             }
         }).mount('#vue_form'); 
